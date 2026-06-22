@@ -13,7 +13,6 @@ function WriteLetter() {
   const [message, setMessage] = useState("")
 
   async function handleSubmit(e) {
-
     e.preventDefault()
 
     if (!title || !content) {
@@ -46,7 +45,6 @@ function WriteLetter() {
   }
 
   return (
-
     <main
       className="min-h-screen relative overflow-hidden"
       style={{
@@ -58,6 +56,7 @@ function WriteLetter() {
     >
 
       {/* NAVBAR */}
+      {/* FIXED: Added flex-col for mobile layout, switches back to flex-row on desktop */}
       <nav className="
         fixed
         top-0
@@ -65,19 +64,26 @@ function WriteLetter() {
         w-full
         z-50
         flex
+        flex-col
+        md:flex-row
         items-center
         justify-between
-        px-12
-        py-6
+        px-4
+        md:px-12
+        py-4
+        md:py-6
         border-b
         border-[#c9a46a]/10
         backdrop-blur-md
         bg-black/20
+        gap-4
+        md:gap-0
       ">
 
         {/* LOGO */}
         <div className="
-          text-3xl
+          text-2xl
+          md:text-3xl
           font-display
           tracking-widest
           text-[#eadfcb]
@@ -86,15 +92,20 @@ function WriteLetter() {
         </div>
 
         {/* NAV LINKS */}
+        {/* FIXED: Reduced layout gap and font tracking so links wrap nicely on mobile phones */}
         <div className="
           flex
-          gap-16
-          text-sm
+          flex-wrap
+          justify-center
+          gap-4
+          md:gap-16
+          text-xs
+          md:text-sm
           uppercase
-          tracking-[0.35em]
+          tracking-[0.2em]
+          md:tracking-[0.35em]
           text-[#eadfcb]
         ">
-
           <Link
             to="/"
             className="hover:text-[#c9a46a] transition duration-300"
@@ -115,7 +126,6 @@ function WriteLetter() {
           >
             Archive
           </Link>
-
         </div>
 
       </nav>
@@ -124,19 +134,19 @@ function WriteLetter() {
       <div className="absolute inset-0 bg-black/35" />
 
       {/* CONTENT */}
-      <div className="relative z-10 px-6 py-32">
+      {/* FIXED: Increased top padding so the new vertical mobile navbar won't overlap the text */}
+      <div className="relative z-10 px-4 md:px-6 py-40 md:py-32">
 
         {/* HEADER */}
-        <section className="text-center mb-14">
-
-          <h1 className="font-display text-7xl text-[#eadfcb] mb-6">
+        <section className="text-center mb-10 md:mb-14">
+          {/* FIXED: Reduced title text size on mobile screens */}
+          <h1 className="font-display text-4xl md:text-7xl text-[#eadfcb] mb-4 md:mb-6">
             Write a Letter
           </h1>
 
-          <p className="text-[#c9a46a] italic text-2xl">
+          <p className="text-[#c9a46a] italic text-lg md:text-2xl px-2">
             Leave words behind for someone unknown.
           </p>
-
         </section>
 
         {/* FORM */}
@@ -144,9 +154,9 @@ function WriteLetter() {
           onSubmit={handleSubmit}
           className="max-w-5xl mx-auto"
         >
-
-          <div className="flex flex-col min-h-[700px] px-20 py-24">
-
+          {/* FIXED: Lowered fixed padding on mobile layout to maximize typing screen space */}
+          <div className="flex flex-col min-h-[500px] md:min-h-[700px] px-4 md:px-20 py-10 md:py-24 bg-black/10 backdrop-blur-sm rounded-lg">
+            {/* FIXED: Scaled down input text font size on small viewports */}
             <input
               type="text"
               placeholder="Letter title..."
@@ -154,19 +164,23 @@ function WriteLetter() {
               onChange={(e) => setTitle(e.target.value)}
               className="
                 bg-transparent
-                text-6xl
+                text-3xl
+                md:text-6xl
                 italic
                 text-[#eadfcb]
                 placeholder:text-[#d6c8b5]
                 outline-none
                 border-b
                 border-[#c8a97e]
-                pb-5
-                mb-14
+                pb-3
+                md:pb-5
+                mb-8
+                md:mb-14
                 font-display
               "
             />
 
+            {/* FIXED: Scaled down body text font size on small viewports */}
             <textarea
               placeholder="Begin writing..."
               value={content}
@@ -176,24 +190,26 @@ function WriteLetter() {
                 bg-transparent
                 resize-none
                 outline-none
-                text-3xl
+                text-xl
+                md:text-3xl
                 leading-loose
                 text-[#f3e7cf]
                 placeholder:text-[#d6c8b5]
               "
             />
-
           </div>
 
           {/* WAX SEAL BUTTON */}
-          <div className="flex flex-col items-center mt-10 gap-6">
-
+          {/* FIXED: Scaled down button size on mobile layout */}
+          <div className="flex flex-col items-center mt-8 md:mt-10 gap-4 md:gap-6">
             <button
               type="submit"
               disabled={loading}
               className="
-                w-40
-                h-40
+                w-28
+                h-28
+                md:w-40
+                md:h-40
                 hover:scale-105
                 active:scale-95
                 transition
@@ -201,21 +217,18 @@ function WriteLetter() {
                 drop-shadow-2xl
               "
             >
-
               <img
                 src={waxSeal}
                 alt="Seal Letter"
                 className="w-full h-full object-contain"
               />
-
             </button>
 
             {message && (
-              <p className="italic text-[#c9a46a] text-xl">
+              <p className="italic text-[#c9a46a] text-lg md:text-xl">
                 {message}
               </p>
             )}
-
           </div>
 
         </form>
