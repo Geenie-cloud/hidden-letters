@@ -182,3 +182,36 @@
     border-right-color: var(--border);
   }
 }
+/* --- MOBILE PHONE FIXES --- */
+@media (max-width: 768px) {
+  
+  /* 1. Make the main containers fit the phone screen width */
+  #root, .app, main, section, .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Force side-by-side items to stack vertically on top of each other */
+  .row, .flex-container, header, footer, .grid-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 3. Shrink massive text images or elements so they don't spill off the screen */
+  img, video, canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* 4. Make big desktop titles smaller so they fit on a mobile screen */
+  h1 {
+    font-size: 1.8rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+}
