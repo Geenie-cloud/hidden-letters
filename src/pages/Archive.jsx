@@ -37,7 +37,6 @@ function Archive() {
     >
 
       {/* NAVBAR */}
-      {/* FIXED: Formatted layout to handle vertical stacking when loaded on small devices */}
       <nav className="
         fixed
         top-0
@@ -114,7 +113,7 @@ function Archive() {
       <div className="absolute inset-0 bg-black/45 z-10" />
 
       {/* CLICKABLE DRAWERS */}
-      {/* FIXED: Lowered total height on small mobile aspect ratios so it matches the image graphics */}
+      {/* FIXED: Scaled height down to 120px on phone screens so it does not block screen touches */}
       <button
         onClick={() => setOpenShelf(true)}
         className="
@@ -124,7 +123,7 @@ function Archive() {
           -translate-x-1/2
           z-30
           w-[85%]
-          h-[180px]
+          h-[120px]
           md:h-[320px]
           bg-transparent
           border-none
@@ -163,7 +162,6 @@ function Archive() {
           >
 
             {/* CLOSE */}
-            {/* FIXED: Shifted downward on phone screens to prevent getting buried under the floating header */}
             <button
               onClick={() => setOpenShelf(false)}
               className="
@@ -197,7 +195,6 @@ function Archive() {
             </button>
 
             {/* SHELF WRAPPER */}
-            {/* FIXED: Adjusted wrapper spacing values for mobile constraints */}
             <div className="
               max-w-7xl
               mx-auto
@@ -210,7 +207,6 @@ function Archive() {
             ">
 
               {/* BROWN SHELF */}
-              {/* FIXED: Scaled back thick borders and outer padding when viewing on small devices */}
               <div className="
                 bg-[#3a2417]/95
                 border-[6px]
@@ -222,7 +218,6 @@ function Archive() {
               ">
 
                 {/* TITLE INSIDE BOX */}
-                {/* FIXED: Adjusted margins and reduced text scales for narrow layouts */}
                 <div className="text-center mb-10 md:mb-20">
                   <h2 className="
                     font-display
@@ -246,7 +241,6 @@ function Archive() {
                 </div>
 
                 {/* LETTER GRID */}
-                {/* FIXED: Reduced layout gap properties on responsive views */}
                 <div className="
                   grid
                   grid-cols-1
@@ -294,7 +288,7 @@ function Archive() {
                       "
                     >
                       <div>
-                        {/* FIXED: Scaled back the text size of the letter headers */}
+                        {/* FIXED: Closed the cut-off heading tag here */}
                         <h2 className="
                           font-display
                           text-3xl
@@ -307,7 +301,6 @@ function Archive() {
                           {letter.title}
                         </h2>
 
-                        {/* FIXED: Switched body description sizes for high readability on smart screens */}
                         <p className="
                           text-base
                           md:text-xl
