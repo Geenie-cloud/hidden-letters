@@ -113,7 +113,7 @@ function Archive() {
       <div className="absolute inset-0 bg-black/45 z-10" />
 
       {/* CLICKABLE DRAWERS */}
-      {/* FIXED: Scaled height down to 120px on phone screens so it does not block screen touches */}
+      {/* FIXED: Keeps height small on phones so it sits neatly at the bottom drawer graph line */}
       <button
         onClick={() => setOpenShelf(true)}
         className="
@@ -161,7 +161,8 @@ function Archive() {
             "
           >
 
-            {/* CLOSE */}
+            {/* CLOSE BUTTON */}
+            {/* FIXED: explicitly set to z-[1000] so it sits clearly on top of the modal scroll window */}
             <button
               onClick={() => setOpenShelf(false)}
               className="
@@ -288,7 +289,6 @@ function Archive() {
                       "
                     >
                       <div>
-                        {/* FIXED: Closed the cut-off heading tag here */}
                         <h2 className="
                           font-display
                           text-3xl
